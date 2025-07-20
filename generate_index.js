@@ -34,12 +34,8 @@ const html = `
   <style>
     body { font-family: monospace; padding: 1em; }
     ul { list-style-type: none; padding-left: 1em; }
-    li::before { content: "— "; color: #aaa; }
-  </style>
-  <style>
-    body { font-family: monospace; padding: 1em; }
     li { padding-left: 0.5em; position: relative; }
-</style>
+  </style>
 </head>
 <body>
   <h1>zev blog</h1>

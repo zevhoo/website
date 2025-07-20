@@ -33,7 +33,7 @@ const html = `
 <html>
 <head><title>zev blog</title></head>
 <body>
-  <h1></h1>
+  <h1>zev hoover blog</h1>
   <p>list of posts:</p>
   <ul>
     ${links}

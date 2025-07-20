@@ -2,9 +2,31 @@ const fs = require('fs');
 const path = require('path');
 
 const postsDir = './posts';
-const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.html'));
 
-const links = files.map(f => `<li><a href="posts/${f}">${f}</a></li>`).join('\n');
+function getHtmlFiles(dir) {
+  let results = [];
+  const list = fs.readdirSync(dir);
+
+  list.forEach(file => {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getHtmlFiles(fullPath));
+    } else if (file.endsWith('.html')) {
+      results.push(fullPath);
+    }
+  });
+
+  return results;
+}
+
+const files = getHtmlFiles(postsDir);
+
+const links = files.map(file => {
+  const relativePath = file.replace(/^\.\/?/, ''); // Remove leading ./ if present
+  return `<li><a href="${relativePath}">${relativePath}</a></li>`;
+}).join('\n');
 
 const html = `
 <!DOCTYPE html>

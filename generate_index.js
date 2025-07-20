@@ -32,10 +32,15 @@ const html = `
 <head>
   <title>zev blog</title>
   <style>
-    body { font-family: sans-serif; padding: 1em; }
+    body { font-family: monospace; padding: 1em; }
     ul { list-style-type: none; padding-left: 1em; }
     li::before { content: "— "; color: #aaa; }
   </style>
+  <style>
+    body { font-family: monospace; padding: 1em; }
+    li { padding-left: 0.5em; position: relative; }
+    li::before { content: "– "; position: absolute; left: 0; color: #888; }
+</style>
 </head>
 <body>
   <h1>zev blog</h1>

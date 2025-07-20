@@ -41,9 +41,11 @@ const html = `
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <h1>zevs<br>blog</h1>
+  <h1>zev blog</h1>
   <p>this site exists as a simple repository of any projects, puzzles or works i want to be in public.
-  <br>index of posts:</p>
+  <br>
+  <br>
+  index of posts:</p>
   ${nestedList}
 </body>
 </html>

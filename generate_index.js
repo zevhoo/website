@@ -1,43 +1,46 @@
 const fs = require('fs');
 const path = require('path');
 
-const postsDir = './posts';
+const baseDir = 'posts';
 
-function getHtmlFiles(dir) {
-  let results = [];
-  const list = fs.readdirSync(dir);
-
-  list.forEach(file => {
-    const fullPath = path.join(dir, file);
+function buildTree(dir, relativePath = '') {
+  const entries = fs.readdirSync(dir).sort();
+  const children = entries.map(entry => {
+    const fullPath = path.join(dir, entry);
+    const relPath = path.join(relativePath, entry);
     const stat = fs.statSync(fullPath);
 
-    if (stat && stat.isDirectory()) {
-      results = results.concat(getHtmlFiles(fullPath));
-    } else if (file.endsWith('.html')) {
-      results.push(fullPath);
+    if (stat.isDirectory()) {
+      const subtree = buildTree(fullPath, relPath);
+      return `<li>${entry}\n<ul>${subtree}</ul></li>`;
+    } else if (entry.endsWith('.html')) {
+      const name = path.parse(entry).name;
+      return `<li><a href="${path.join(baseDir, relPath)}">${name}</a></li>`;
+    } else {
+      return '';
     }
   });
 
-  return results;
+  return children.filter(Boolean).join('\n');
 }
 
-const files = getHtmlFiles(postsDir);
-
-const links = files.map(file => {
-  const relativePath = file.replace(/^\.\/?/, ''); // Remove leading ./ if present
-  return `<li><a href="${relativePath}">${relativePath}</a></li>`;
-}).join('\n');
+const nestedList = `<ul><li>${baseDir}<ul>${buildTree(baseDir)}</ul></li></ul>`;
 
 const html = `
 <!DOCTYPE html>
 <html>
-<head><title>zev blog</title></head>
+<head>
+  <title>zev blog</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    ul { list-style-type: none; padding-left: 1em; }
+    li::before { content: "— "; color: #aaa; }
+  </style>
+</head>
 <body>
-  <h1>zev hoover blog</h1>
-  <p>list of posts:</p>
-  <ul>
-    ${links}
-  </ul>
+  <h1>zev blog</h1>
+  <p>index of posts:</p>
+  ${nestedList}
 </body>
 </html>
 `;

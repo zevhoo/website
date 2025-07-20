@@ -38,6 +38,7 @@ const html = `
     ul { list-style-type: none; padding-left: 1em; }
     li { padding-left: 0.5em; position: relative; }
   </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
   <h1>zev blog</h1>

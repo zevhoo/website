@@ -1,5 +1,5 @@
 {
-  "name": "html-blog",
+  "name": "cf-pages-html-blog",
   "version": "1.0.0",
   "scripts": {
     "build": "node generate_index.js"

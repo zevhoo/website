@@ -39,7 +39,6 @@ const html = `
   <style>
     body { font-family: monospace; padding: 1em; }
     li { padding-left: 0.5em; position: relative; }
-    li::before { content: "– "; position: absolute; left: 0; color: #888; }
 </style>
 </head>
 <body>

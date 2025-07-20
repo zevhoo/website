@@ -31,10 +31,10 @@ const links = files.map(file => {
 const html = `
 <!DOCTYPE html>
 <html>
-<head><title>My Posts</title></head>
+<head><title>zev blog</title></head>
 <body>
-  <h1>Welcome to My Site</h1>
-  <p>This is an auto-generated list of posts:</p>
+  <h1></h1>
+  <p>list of posts:</p>
   <ul>
     ${links}
   </ul>

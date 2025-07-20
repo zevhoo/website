@@ -33,8 +33,8 @@ const html = `
   <title>zev blog</title>
   <style>
     body { font-family: monospace; padding: 1em; }
-    a { text-decoration: none; color: #884422; }
-    a:hover { text-decoration: underline; color: #bb8844; }
+    a { font-weight: bold; text-decoration: none; color: #ff7800; }
+    a:hover { text-decoration: underline; color: #a64e00; }
     ul { list-style-type: none; padding-left: 1em; }
     li { padding-left: 0.5em; position: relative; }
   </style>

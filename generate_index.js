@@ -27,7 +27,7 @@ function buildTree(dir, relativePath = '') {
 const nestedList = `<ul><li>${baseDir}<ul>${buildTree(baseDir)}</ul></li></ul>`;
 
 // Read the template
-let template = fs.readFileSync('index.html', html);
+let template = fs.readFileSync('index.html', 'utf8');
 
 // Inject it into the template
 const html = template.replace('{{POST_LIST}}', nestedList);
